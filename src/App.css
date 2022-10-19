@@ -1,0 +1,20 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.saat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 44%;
+  top: 25%;
+  font-size: 2rem;
+}
+
+.saat p {
+  margin-right: 5px;
+}

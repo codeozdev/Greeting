@@ -1,27 +1,40 @@
+import { useState } from 'react'
 import './App.css'
 
-function App() {
-    let curDate = new Date()
-    curDate = curDate.getHours()
-    let greeting = ''
-    const cssStyle = {}
+let time = new Date().toLocaleTimeString()
 
-    if (curDate >= 1 && curDate < 12) {
-        greeting = 'Good Morning'
-        cssStyle.color = 'green'
-    } else if (curDate >= 12 && curDate < 19) {
-        greeting = 'Good Afternoon'
-        cssStyle.color = 'orange'
+function App() {
+    const [ctime, setCtime] = useState(time)
+
+    const style = {}
+
+    let hour = new Date().getHours()
+    let text = ''
+    if (hour > 7 && hour < 12) {
+        text = 'Good Morning'
+        style.color = 'blue'
+    } else if (hour > 12 && hour < 19) {
+        text = 'Good Afternoon'
+        style.color = 'green'
     } else {
-        greeting = 'Good Night'
-        cssStyle.color = 'red'
+        text = 'Good Night'
+        style.color = 'red'
     }
+
+    const UpdateTime = () => {
+        let time = new Date().toLocaleTimeString()
+        setCtime(time)
+    }
+
+    setInterval(UpdateTime, 1000)
+
     return (
-        <div className='App'>
-            <h1>
-                Hello sir, <span style={cssStyle}>{greeting}</span>
-            </h1>
-        </div>
+        <>
+            <h1>{ctime}</h1>
+            <h3>
+                Hello sir, <span style={style}>{text}</span>
+            </h3>
+        </>
     )
 }
 
